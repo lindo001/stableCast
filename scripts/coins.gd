@@ -1,16 +1,9 @@
 extends Area2D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
+@onready var coin_sfx = $AudioStreamPlayer2D
+@onready var game_m = %GameManager
+@onready var animation_player = $AnimationPlayer
 
 func _on_body_entered(body):
 	if body.name == "knight":
-		queue_free()
+		game_m.add_score()
+		animation_player.play("coin_opickup")

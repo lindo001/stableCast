@@ -14,6 +14,10 @@ config/name="stableCast"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Music="*res://game_based/music.tscn"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
