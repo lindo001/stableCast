@@ -3,10 +3,8 @@ extends Area2D
 
 func _on_body_entered(body):
 	timer.start()
-	
-	Engine.time_scale = 0.5
-	#body.vellocity.y = 30
-	#print(body.get_node())
+	   
+	Engine.time_scale = 0.1
 	body.get_node("CollisionShape2D").queue_free()
 	print("You died")
 

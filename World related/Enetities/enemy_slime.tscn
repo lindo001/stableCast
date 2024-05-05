@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://s70s8sjyv1yu"]
+[gd_scene load_steps=19 format=3 uid="uid://s70s8sjyv1yu"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_1oeil"]
 [ext_resource type="Texture2D" uid="uid://bo524ng2jwbqe" path="res://assets/sprites/slime_green.png" id="1_3o1ia"]
@@ -107,19 +107,25 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3wxwy"]
-size = Vector2(16, 13)
+size = Vector2(14, 7.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rxcgw"]
+size = Vector2(11, 4)
 
 [node name="enemy_slime" type="Node2D"]
 script = ExtResource("1_1oeil")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ual6u")
-animation = &"hurt"
+animation = &"move"
+autoplay = "move"
+frame_progress = 0.177853
 
 [node name="killzone" parent="." instance=ExtResource("2_pikni")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
-position = Vector2(0, 3.5)
+visibility_layer = 2
+position = Vector2(0, 7.75)
 shape = SubResource("RectangleShape2D_3wxwy")
 
 [node name="ray_cast_r" type="RayCast2D" parent="."]
@@ -127,3 +133,11 @@ target_position = Vector2(11, 0)
 
 [node name="ray_cast_l" type="RayCast2D" parent="."]
 target_position = Vector2(-12, 0)
+
+[node name="hurtzone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtzone"]
+position = Vector2(-0.5, 1)
+shape = SubResource("RectangleShape2D_rxcgw")
+
+[connection signal="body_entered" from="hurtzone" to="." method="_on_hurtzone_body_entered"]

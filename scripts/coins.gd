@@ -5,5 +5,5 @@ extends Area2D
 
 func _on_body_entered(body):
 	if body.name == "knight":
-		game_m.add_score()
+		Global_bucket.add_score()
 		animation_player.play("coin_opickup")

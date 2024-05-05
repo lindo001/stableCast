@@ -11,12 +11,14 @@ config_version=5
 [application]
 
 config/name="stableCast"
+run/main_scene="res://World related/Rooms/level_One.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Music="*res://game_based/music.tscn"
+Global_bucket="*res://scripts/Manager.gd"
 
 [rendering]
 
